@@ -27,7 +27,7 @@ modelo.
 
 
 ```{r}
-dataset = read.csv("grados.csv")
+dataset = read.csv("admisions.csv")
 
 head(dataset)
 ```
