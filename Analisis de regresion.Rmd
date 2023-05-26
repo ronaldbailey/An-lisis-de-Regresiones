@@ -46,7 +46,7 @@ $$
 r= \sqrt{r}
 $$
 
-**Recuerde que � representa la cantidad de filas en el dataset**
+**Recuerde que n representa la cantidad de filas en el dataset**
 
 
 # Leer el dataset
