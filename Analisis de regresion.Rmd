@@ -23,6 +23,32 @@ dependiente (Y), devuelva una lista con los siguientes elementos:
 5. Una gráfica con la nube de puntos y la recta de regresión del
 modelo.
 
+
+**Nota:** Para este ejercicio NO está permitido utilizar la función
+lm()para calcular ninguno de los elementos solicitados (incisos 1 al
+4), sin embargo puede utilizar ggplot para realizar la gráfica del
+inciso 5
+
+
+Recuerde de su curso de Econometria que:
+$$
+\hat{\beta}_1 = \frac{\sum _{i=1}^nx_iy_i -n \sum _{i=1}^nx_iy_i}{(\sum _{i=1}^n x_i )^2 - n\sum _{i=1}^n x_i^2}
+$$
+$$
+\hat{\beta}_0 = \frac{\sum _{i=1}^ny_i -\beta_1 \sum _{i=1}^nx_i}{n}
+$$
+$$
+r^2= \frac{\sum _{i=1}(\hat y_i - \overline{y_i} )^2 }{ \sum _{i=1}( y_i - \overline{y_i} )^2}
+$$
+
+
+$$
+r= \sqrt{r}
+$$
+
+**Recuerde que � representa la cantidad de filas en el dataset**
+
+
 # Leer el dataset
 
 
