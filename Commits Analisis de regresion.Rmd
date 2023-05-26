@@ -22,7 +22,7 @@ system("git config --global user.name \"ronaldbailey\"")
 
 
 
-## Primer commit
+## Commit 1
 
 ```{r}
 
