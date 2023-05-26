@@ -53,7 +53,7 @@ $$
 
 
 ```{r}
-dataset = read.csv("admisions.csv")
+dataset = read.csv("grados.csv")
 
 head(dataset)
 ```
