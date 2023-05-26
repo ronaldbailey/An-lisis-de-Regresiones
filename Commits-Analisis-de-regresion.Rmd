@@ -1,0 +1,33 @@
+---
+title: "Commits Analisis de regresion"
+author: "Ronald Bailey"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Configuracion de Git para que los comandos magicos funcionen
+
+
+```{r}
+system("git config --global user.email \"ronald.bailey@galileo.edu\"")
+system("git config --global user.name \"ronaldbailey\"")
+
+```
+
+
+
+
+## Primer commit
+
+```{r}
+
+system("git add .")
+system("git commit -m \"Primer commit\"")
+system("git push")
+```
+
