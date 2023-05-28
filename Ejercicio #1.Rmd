@@ -1,5 +1,5 @@
 ---
-title: "Analisis de regresion"
+title: "Ejercicio # 1 Analisis de regresion"
 author: "Ronald Bailey"
 date: "`r Sys.Date()`"
 output: pdf_document
