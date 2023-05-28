@@ -59,10 +59,15 @@ El valor F es 211.5 con un valor p muy pequeño (< 2.2e-16), lo que indica que e
 
 En general, este modelo parece ser un buen ajuste para los datos, ya que tiene un R-cuadrado alto y todos los coeficientes son significativos. Sin embargo, siempre es importante tener en cuenta las suposiciones de la regresión lineal (por ejemplo, linealidad, homocedasticidad, independencia de los errores) cuando se interpreta la salida del modelo.
 
-```{r}
 
-1+1
-```
 # ***Modelo #3***
 
+- Intercepto (Intercept): El valor del intercepto es 72.6826. Esto significa que cuando la variable Months es cero, se espera que la variable de respuesta Cab.Price sea 72.6826. El valor p asociado con este coeficiente es muy pequeño (6.92e-10, mucho menor que 0.05), lo que indica que este coeficiente es estadísticamente significativo.
 
+- Months: El coeficiente para Months es 4.8626. Esto significa que por cada incremento unitario en Months, se espera que Cab.Price aumente en 4.8626 unidades, asumiendo que todas las demás variables se mantienen constantes. El valor p asociado con este coeficiente es muy pequeño (7.18e-08, mucho menor que 0.05), lo que indica que este coeficiente es estadísticamente significativo.
+
+- El modelo tiene un R-cuadrado de 0.9509, lo que indica que el modelo explica el 95.09% de la variabilidad en la variable de respuesta Cab.Price. El R-cuadrado ajustado, que toma en cuenta el número de predictores en el modelo, es 0.946.
+
+- El valor F es 193.6 con un valor p muy pequeño (7.181e-08), lo que indica que el modelo en su conjunto es estadísticamente significativo.
+
+**En resumen**, este modelo de regresión parece ser un buen ajuste para los datos, dado que el R-cuadrado es alto y todos los coeficientes son estadísticamente significativos. No obstante, siempre es importante tener en cuenta las suposiciones de la regresión lineal cuando se interpreta la salida del modelo.

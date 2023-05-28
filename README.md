@@ -20,5 +20,5 @@ Laboratorio #3: Modelos de Regresión en R
 # Ejercicio 3
 
   - Codigo: https://github.com/ronaldbailey/An-lisis-de-Regresiones/blob/main/Ejercicio%20%233.Rmd
-  - Documentacion: 
+  - Documentacion: https://github.com/ronaldbailey/An-lisis-de-Regresiones/blob/main/Ejercicio--3.pdf
   
