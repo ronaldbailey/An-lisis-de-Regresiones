@@ -182,11 +182,80 @@ formulas <- list(
 ```
 
 ```{r}
+
+
+
+formulas <- list(
+  "Chance.of.Admit ~ TOEFL.Score",
+  "Chance.of.Admit ~ CGPA",
+  "Chance.of.Admit ~ GRE.Score",
+  "Chance.of.Admit ~ TOEFL.Score + CGPA",
+  "Chance.of.Admit ~ TOEFL.Score + GRE.Score",
+  "Chance.of.Admit ~ GRE.Score + CGPA",
+  "Chance.of.Admit ~ TOEFL.Score + CGPA + GRE.Score"
+)
 model <- train(as.formula(formulas[[1]]), data = dataset, method = "lm", trControl = ctrl)
 
+
+print(formulas[[1]])
+nuevo_lista <- list()
+nuevo_lista[[formulas[[1]]]] <- model
 # Imprimir los resultados del modelo
 print(model)
-
+nuevo_lista$`Chance.of.Admit ~ TOEFL.Score`
 
 ```
 
+```{r}
+# Cargar la biblioteca caret
+library(caret)
+
+# Establecer el método de control de entrenamiento
+ctrl <- trainControl(method = "cv", number = 10)
+
+# Especificar las fórmulas para los diferentes modelos
+formulas <- list(
+  "Chance.of.Admit ~ TOEFL.Score",
+  "Chance.of.Admit ~ CGPA",
+  "Chance.of.Admit ~ GRE.Score",
+  "Chance.of.Admit ~ TOEFL.Score + CGPA",
+  "Chance.of.Admit ~ TOEFL.Score + GRE.Score",
+  "Chance.of.Admit ~ GRE.Score + CGPA",
+  "Chance.of.Admit ~ TOEFL.Score + CGPA + GRE.Score"
+)
+
+# Inicializar una lista para almacenar los resultados de los modelos
+results <- list()
+modelos <- list()
+
+# Utilizar un bucle para entrenar cada modelo y calcular el RMSE
+for (i in 1:length(formulas)) {
+  set.seed(123)
+  model <- train(as.formula(formulas[[i]]), data = dataset, method = "lm", trControl = ctrl)
+  results[[i]] <- data.frame(Formula = formulas[[i]], RMSE = model$results$RMSE)
+  modelos[[formulas[[i]]]] <- model
+}
+
+# Crear un data frame con los resultados
+results_df <- do.call(rbind, results)
+
+results_df
+
+```
+
+```{r}
+
+print(modelos)
+
+```
+
+```{r}
+
+min(results_df$RMSE)
+
+```
+```{r}
+
+ subset(results_df, RMSE == min(results_df$RMSE))
+
+```

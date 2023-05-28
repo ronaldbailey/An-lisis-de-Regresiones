@@ -94,6 +94,11 @@ system("git commit -m \"Ejercicio 2 tema 6 \"")
 system("git push")
 ```
 
+```{r}
 
+system("git add .")
+system("git commit -m \"Ejercicio 2 tema 6 final\"")
+system("git push")
+```
 
 
