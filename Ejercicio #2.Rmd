@@ -8,3 +8,64 @@ output: pdf_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+# **Ejercicio #2:** 
+
+Para este ejercicio se le solicita que desarrolle las
+siguientes actividades utilizando RStudio Con el dataset Admissions adjunto
+a este laboratorio realice lo siguiente:
+
+
+```{r}
+dataset = read.csv("Admisions.csv")
+
+```
+
+
+**1. Realice un análisis estadístico sobre todas las variables del dataset, recuerde que pude usar la función summary().**
+
+
+```{r}
+summary(dataset)
+
+```
+Según la descripción proporcionada por la función `summary()`, el conjunto de datos tiene varias variables:
+
+- **Serial.No.** : Esta parece ser una identificación única para cada estudiante. Rango de 1 a 500, y parece estar distribuido uniformemente dado que la mediana y la media son aproximadamente la misma (250.5).
+
+- **GRE.Score** : Este es el puntaje GRE de los estudiantes. La puntuación mínima es de 290, la máxima es de 340, y la media es de 316.5, lo que indica que los puntajes son relativamente altos en promedio.
+
+- **TOEFL.Score** : Este es el puntaje TOEFL de los estudiantes. La puntuación mínima es de 92, la máxima es de 120 y la media es de 107.2, lo que también indica un nivel de puntajes relativamente alto.
+
+- **University.Rating** : Esta es la calificación de la universidad. Las calificaciones van de 1 a 5, y la media está en 3.114, lo que sugiere que las calificaciones están distribuidas bastante uniformemente.
+
+- **SOP** : Esta parece ser una medida de la calidad de la declaración de propósito de los estudiantes. Va de 1 a 5, y la media es 3.374, lo que indica una calidad promedio bastante buena.
+
+- **LOR** : Esta es una medida de la calidad de las cartas de recomendación. También va de 1 a 5, y la media es 3.484, lo que también indica una buena calidad promedio.
+
+- **CGPA** : Este es el promedio de calificaciones acumulado de los estudiantes. Va de 6.8 a 9.92, y la media es 8.576, lo que indica un alto nivel de rendimiento académico.
+
+- **Research** : Este parece ser un indicador binario de si el estudiante ha hecho investigación o no. La media es 0.56, lo que indica que más de la mitad de los estudiantes ha hecho investigación.
+
+- **Chance.of.Admit** : Esta es la probabilidad de admisión. Va de 0.34 a 0.97, y la media es 0.7217, lo que indica que la probabilidad promedio de admisión es bastante alta.
+
+Cabe señalar que aunque estos análisis proporcionan información valiosa, es importante complementarlos con visualizaciones de datos y análisis adicionales, como verificar la correlación entre diferentes variables, realizar pruebas de hipótesis, etc.
+
+
+**2. Realice una gráfica de densidad para cada una de las variables numéricas en el dataset: GRE.Score, TOEFEL.Score, CGPA y Chance of Admit.**
+
+
+```{r}
+# Cargar la librería ggplot2
+library(ggplot2)
+
+
+
+# Crear gráficos de densidad
+ggplot(dataset, aes(x = GRE.Score)) + geom_density(fill = "blue") + labs(title = "GRE Score")
+ggplot(dataset, aes(x = TOEFL.Score)) + geom_density(fill = "blue") + labs(title = "TOEFL Score")
+ggplot(dataset, aes(x = CGPA)) + geom_density(fill = "blue") + labs(title = "CGPA")
+ggplot(dataset, aes(x = Chance.of.Admit)) + geom_density(fill = "blue") + labs(title = "Chance of Admit")
+
+
+```
