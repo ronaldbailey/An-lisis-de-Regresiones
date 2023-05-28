@@ -264,5 +264,7 @@ min(results_df$RMSE)
 
 ```{r}
 
-summary(lm(formula = Chance.of.Admit ~ TOEFL.Score + . , data = dataset))
+summary(lm(formula = Chance.of.Admit ~ . , data = dataset))
 ```
+
+
