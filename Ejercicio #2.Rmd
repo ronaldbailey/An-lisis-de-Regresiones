@@ -69,3 +69,38 @@ ggplot(dataset, aes(x = Chance.of.Admit)) + geom_density(fill = "blue") + labs(t
 
 
 ```
+
+
+```{r}
+
+# Cargar la biblioteca corrplot
+library(corrplot)
+
+
+# Subconjunto de datos con las variables de interés
+data_subset <- dataset[, c("GRE.Score", "TOEFL.Score", "CGPA", "Chance.of.Admit")]
+
+# Calcular la matriz de correlación
+cor_matrix <- cor(data_subset)
+print(cor_matrix)
+# Crear el mapa de calor de correlación
+corrplot(cor_matrix, method = "color")
+
+```
+
+
+**4. Realice comentarios sobre el análisis estadístico de las variables numéricas y la gráfica de correlación.**
+
+- GRE.Score y TOEFL.Score tienen una correlación de 0.827, lo que indica una relación lineal positiva fuerte. Esto significa que a medida que las puntuaciones GRE aumentan, también lo hacen las puntuaciones TOEFL, y viceversa.
+
+- GRE.Score y CGPA tienen una correlación de 0.826, lo que también indica una fuerte relación lineal positiva.
+
+- GRE.Score y Chance.of.Admit tienen una correlación de 0.810, lo que indica una fuerte relación lineal positiva.
+
+- TOEFL.Score y CGPA tienen una correlación de 0.811, lo que indica una fuerte relación lineal positiva.
+
+- TOEFL.Score y Chance.of.Admit tienen una correlación de 0.792, lo que indica una fuerte relación lineal positiva.
+
+- CGPA y Chance.of.Admit tienen la correlación más fuerte en tu matriz de 0.882, lo que indica una muy fuerte relación lineal positiva.
+
+
