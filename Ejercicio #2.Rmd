@@ -91,17 +91,25 @@ corrplot(cor_matrix, method = "color")
 
 **4. Realice comentarios sobre el análisis estadístico de las variables numéricas y la gráfica de correlación.**
 
-- GRE.Score y TOEFL.Score tienen una correlación de 0.827, lo que indica una relación lineal positiva fuerte. Esto significa que a medida que las puntuaciones GRE aumentan, también lo hacen las puntuaciones TOEFL, y viceversa.
+El análisis estadístico de las variables numéricas revela información importante sobre el conjunto de datos:
 
-- GRE.Score y CGPA tienen una correlación de 0.826, lo que también indica una fuerte relación lineal positiva.
+- **GRE.Score**: Los puntajes de GRE van desde 290 hasta 340, con una media de 316.5. Esto indica que los puntajes son relativamente altos en promedio, lo que puede sugerir que los estudiantes tienen un buen desempeño en los exámenes GRE.
 
-- GRE.Score y Chance.of.Admit tienen una correlación de 0.810, lo que indica una fuerte relación lineal positiva.
+- **TOEFL.Score**: Los puntajes de TOEFL varían desde 92 hasta 120, con una media de 107.2. Al igual que los puntajes de GRE, los puntajes de TOEFL también son relativamente altos en promedio, lo que puede indicar un nivel de dominio del idioma inglés para los estudiantes.
 
-- TOEFL.Score y CGPA tienen una correlación de 0.811, lo que indica una fuerte relación lineal positiva.
+- **CGPA**: Las calificaciones acumuladas promedio (CGPA) oscilan entre 6.8 y 9.92, con una media de 8.576. Esta media alta sugiere que los estudiantes tienen un buen desempeño académico en general.
 
-- TOEFL.Score y Chance.of.Admit tienen una correlación de 0.792, lo que indica una fuerte relación lineal positiva.
+- **Chance.of.Admit**: La probabilidad de admisión varía entre 0.34 y 0.97, con una media de 0.7217. La media relativamente alta indica que los estudiantes tienen una probabilidad promedio de admisión bastante alta.
 
-- CGPA y Chance.of.Admit tienen la correlación más fuerte en tu matriz de 0.882, lo que indica una muy fuerte relación lineal positiva.
+En cuanto a la gráfica de correlación, se observa lo siguiente:
+
+- Las variables `GRE.Score`, `TOEFL.Score` y `CGPA` están fuertemente correlacionadas entre sí y también tienen una correlación significativa con la variable `Chance.of.Admit`. Esto sugiere que los estudiantes con altos puntajes en el GRE, TOEFL y calificaciones acumuladas tienen una mayor probabilidad de admisión.
+
+- La correlación más fuerte se encuentra entre `CGPA` y `Chance.of.Admit`, con un valor de 0.882. Esto indica una relación muy fuerte y positiva entre el rendimiento académico (CGPA) y la probabilidad de admisión.
+
+- Las variables `TOEFL.Score` y `GRE.Score` también tienen una correlación considerablemente alta con `Chance.of.Admit`, con valores de 0.827 y 0.810, respectivamente. Esto indica que los puntajes altos en estos exámenes están asociados con una mayor probabilidad de admisión.
+
+En general, los análisis estadísticos y la gráfica de correlación sugieren que las variables numéricas en el dataset están relacionadas y pueden ser indicadores importantes para predecir la probabilidad de admisión de los estudiantes.
 
 
 ```{r}
