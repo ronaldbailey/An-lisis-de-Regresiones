@@ -104,3 +104,23 @@ corrplot(cor_matrix, method = "color")
 - CGPA y Chance.of.Admit tienen la correlación más fuerte en tu matriz de 0.882, lo que indica una muy fuerte relación lineal positiva.
 
 
+```{r}
+
+
+
+# Realizar gráficos de dispersión para todas las variables numéricas
+variables <- c("GRE.Score", "TOEFL.Score", "CGPA")
+
+# Utilizar un bucle para crear gráficos para todas las variables
+for (var in variables){
+  p <- ggplot(dataset, aes_string(x = var, y = "Chance.of.Admit")) + 
+    geom_point() +
+    labs(title = paste("Grafica de puntos", var, "vs Chance of Admit"),
+         x = var,
+         y = "Chance of Admit")
+  print(p)
+}
+
+```
+
+
