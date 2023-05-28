@@ -106,13 +106,8 @@ corrplot(cor_matrix, method = "color")
 
 ```{r}
 
-
-
-# Realizar gráficos de dispersión para todas las variables numéricas
-variables <- c("GRE.Score", "TOEFL.Score", "CGPA")
-
 # Utilizar un bucle para crear gráficos para todas las variables
-for (var in variables){
+for (var in as.vector(colnames(dataset))){
   p <- ggplot(dataset, aes_string(x = var, y = "Chance.of.Admit")) + 
     geom_point() +
     labs(title = paste("Grafica de puntos", var, "vs Chance of Admit"),
@@ -120,6 +115,15 @@ for (var in variables){
          y = "Chance of Admit")
   print(p)
 }
+
+```
+
+```{r}
+
+
+
+
+
 
 ```
 
