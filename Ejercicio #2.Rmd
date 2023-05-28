@@ -142,15 +142,33 @@ Posteriormente cree una lista ordenando de mejor a peor cual es el
 mejor modelo en predicción, recuerde que es necesario caclular el
 RMSE para poder armar correctamente la lista. 
 
-```{r}
 
-# Cargar la biblioteca caret
+```{r}
+library(dplyr)
 library(caret)
+```
+
+
+
+```{r}
 
 # Establecer el método de control de entrenamiento
 ctrl <- trainControl(method = "cv", number = 10)
 
-# Especificar las fórmulas para los diferentes modelos
+# Definir la fórmula del modelo
+formula <- "Chance.of.Admit ~ TOEFL.Score"
+
+# Entrenar el modelo utilizando validación cruzada
+model <- train(as.formula(formula), data = dataset, method = "lm", trControl = ctrl)
+
+# Imprimir los resultados del modelo
+print(model)
+
+```
+
+```{r}
+
+
 formulas <- list(
   "Chance.of.Admit ~ TOEFL.Score",
   "Chance.of.Admit ~ CGPA",
@@ -161,54 +179,14 @@ formulas <- list(
   "Chance.of.Admit ~ TOEFL.Score + CGPA + GRE.Score"
 )
 
-# Inicializar una lista para almacenar los resultados de los modelos
-results <- list()
-
-# Utilizar un bucle para entrenar cada modelo y calcular el RMSE
-for (i in 1:length(formulas)) {
-  set.seed(123)
-  model <- train(as.formula(formulas[[i]]), data = dataset, method = "lm", trControl = ctrl)
-  results[[i]] <- list(
-    Formula = formulas[[i]],
-    RMSE = model$results$RMSE
-  )
-}
-
-# Ordenar los resultados por RMSE en orden ascendente (menor a mayor)
-#results <- do.call(rbind, results)
-#results <- results[order(results$RMSE), ]
-
-#results
-
-# Crear un data frame con los resultados
-results_df <- do.call(rbind, results)
-
-results_df
-
-
 ```
 
 ```{r}
-typeof(results_df)
+model <- train(as.formula(formulas[[1]]), data = dataset, method = "lm", trControl = ctrl)
+
+# Imprimir los resultados del modelo
+print(model)
+
+
 ```
-
-
-```{r}
-library(dplyr)
-
-# Convertir la lista en un data frame
-results_df <- bind_rows(results)
-
-# Imprimir el data frame results_df
-print(results_df)
-```
-```{r}
-# Seleccionar la fila con el valor mínimo de RMSE
-best_model <- filter(results_df, RMSE == min(RMSE))
-
-# Imprimir el mejor modelo
-print(best_model)
-```
-
-
 
