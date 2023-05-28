@@ -1,0 +1,205 @@
+---
+title: "Analisis de regresion"
+author: "Ronald Bailey"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# **Laboratorio #3: Modelos de Regresión en R**
+
+**Ejercicio #1:** utilizando R realice una función que dado un dataframe
+cualquiera de dos columnas, donde la primera (índice 1) sea el valor de
+la variable independiente (X) y la segunda sea el valor de una variable
+dependiente (Y), devuelva una lista con los siguientes elementos:
+
+1. Un arreglo con los valores de los estimadores para B0 y B1".
+2. El valor del coeficiente de determinación r^2 del modelo.
+3. El coeficiente de correlación r (raíz cuadrada de r^2).
+4. Un arreglo con los valores de los residuos.
+5. Una gráfica con la nube de puntos y la recta de regresión del
+modelo.
+
+
+**Nota:** Para este ejercicio NO está permitido utilizar la función
+lm()para calcular ninguno de los elementos solicitados (incisos 1 al
+4), sin embargo puede utilizar ggplot para realizar la gráfica del
+inciso 5
+
+
+## **La funcion lineal:**
+
+$$
+\overline{y} =  \hat{\beta}_1  x + \hat{\beta}_0   
+$$
+
+
+
+Recuerde de su curso de Econometria que:
+$$
+\hat{\beta}_1 = \frac{\sum _{i=1}^nx_iy_i -n   \overline{x} \overline{y}}{(\sum _{i=1}^n x_i ^2) - n \overline{x} ^ 2}
+$$
+
+$x =$ valores conocido de la variable independiente
+
+$y =$ valores conocido de la variable dependiente
+
+$\overline{x} =$ promedio de valores de las x 
+
+$\overline{y} =$ promedio de valores de las y
+
+$n =$ numero de datos puntuales u observaciones
+
+$i = $ indice de la valuacion
+
+
+$$
+\hat{\beta}_0 = \overline{y} - \hat{\beta}_1 \overline{x}
+$$
+
+
+$$
+r^2= \frac{\sum _{i=1}(\hat y_i - \overline{y_i} )^2 }{ \sum _{i=1}( y_i - \overline{y_i} )^2}
+$$
+
+
+$$
+r= \sqrt{r}
+$$
+
+**Recuerde que n representa la cantidad de filas en el dataset**
+
+
+# Leer el dataset
+
+
+```{r}
+dataset = read.csv("grados.csv")
+
+head(dataset)
+```
+
+
+
+```{r}
+summary(dataset)
+```
+
+
+
+```{r}
+# Cargar la biblioteca necesaria
+library(ggplot2)
+
+# generar gráfico
+ggplot(dataset, aes(x=Centígrados, y=Farenheit)) +
+             geom_point() 
+  
+```
+
+
+```{r}
+# Crear algunos datos de ejemplo
+
+x <- dataset$Centígrados
+y <- dataset$Farenheit
+
+# Calcular las medias
+x_bar <- mean(x)
+y_bar <- mean(y)
+
+# Calcular las desviaciones
+x_dev <- x - x_bar
+y_dev <- y - y_bar
+
+# Calcular los coeficientes de regresión
+beta_1 <- sum(x_dev * y_dev) / sum(x_dev^2)
+beta_0 <- y_bar - beta_1 * x_bar
+
+# Crear un arreglo con los valores de los estimadores para B0 y B1
+estimadores <- c(beta_0, beta_1)
+
+# Calcular los valores predichos
+y_predicha <- beta_0 + beta_1 * x
+
+# Calcular los residuos
+residuos <- y - y_predicha
+
+# Calcular R cuadrado
+r_cuadrado <- 1 - sum(residuos^2) / sum((y - y_bar)^2)
+
+# Calcular el coeficiente de correlación r
+r <- sqrt(r_cuadrado)
+
+# Crear una lista con los resultados
+resultados <- list(estimadores = estimadores, 
+                   r_cuadrado = r_cuadrado, 
+                   r = r, 
+                   residuos = residuos)
+
+# Imprimir los resultados
+print(resultados)
+
+# Crear el gráfico
+library(ggplot2)
+dataset <- data.frame(x = x, y = y, y_predicha = y_predicha)
+grafico <- ggplot(dataset, aes(x = x, y = y)) +
+             geom_point() +
+             geom_line(aes(x = x, y = y_predicha), color = "red")
+grafico
+
+```
+
+
+```{r}
+head(data.frame(B0 = beta_0, 
+                         B1 = beta_1, 
+                         R_Cuadrado = r_cuadrado, 
+                         R = r, 
+                         Residuos = list(residuos)) )
+
+```
+
+
+
+
+```{r}
+summary(data.frame(B0 = beta_0, 
+                         B1 = beta_1, 
+                         R_Cuadrado = r_cuadrado, 
+                         R = r, 
+                         Residuos = list(residuos)) )
+
+```
+# Resumen
+
+**1. Un arreglo con los valores de los estimadores para B0 y B1".**
+
+```{r}
+arreglo = c(beta_0, beta_1)
+arreglo
+```
+**2. El valor del coeficiente de determinación r^2 del modelo.**
+
+```{r}
+r_cuadrado
+```
+**3. El coeficiente de correlación r (raíz cuadrada de r^2).**
+```{r}
+r
+```
+**4. Un arreglo con los valores de los residuos.**
+```{r}
+residuos
+```
+
+**5. Una gráfica con la nube de puntos y la recta de regresión del modelo.**
+
+```{r}
+grafico
+```
+
+
