@@ -257,5 +257,12 @@ min(results_df$RMSE)
 ```{r}
 
  subset(results_df, RMSE == min(results_df$RMSE))
+```
 
+
+
+
+```{r}
+
+summary(lm(formula = Chance.of.Admit ~ TOEFL.Score + . , data = dataset))
 ```
